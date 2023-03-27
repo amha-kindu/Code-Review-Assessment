@@ -1,22 +1,21 @@
-def is_valid_parenthesis(s):
-    dc = {
+def is_valid_parenthesis(string):
+    brackets = {
         '(': ')',
           "{": "}",
          '[': ']'
-
     }
+
     stack = []
-    for i in s:
-        if i in dc.keys(): stack.append(i)
+    for char in string:
+        if char in brackets: 
+            stack.append(char)
+
         else:
             if len(stack) == 0:
                 return False
             
-
-            op = stack.pop()
-            if dc[op] != i:
+            opening = stack.pop()
+            if brackets[opening] != char:
                 return False
-    if len(stack) != 0:
-        return False
     
-    return True
+    return len(stack) == 0
